@@ -1,0 +1,56 @@
+---
+molecule_exceptions:
+  - variation: centos-stream9
+    reason: "No hashicorp Repository"
+molecule_scenarios:
+  - scenario: "default"
+    ansible: ["previous", "current"]
+    platforms:
+      - "debian9"
+      - "debian10"
+      - "debian11"
+      - "ubuntu1804"
+      - "ubuntu2004"
+      - "ubuntu2204"
+      - "centos7"
+      - "centos-stream8"
+      - "ubi8"
+      - "fedora35"
+      - "fedora36"
+      - "amazonlinux"
+      - "rockylinux8"
+      - "almalinux8"
+  - scenario: "cluster"
+    ansible: ["previous", "current"]
+    platforms:
+      - "debian9"
+      - "debian10"
+      - "debian11"
+      - "ubuntu1804"
+      - "ubuntu2004"
+      - "ubuntu2204"
+      - "centos7"
+      - "centos-stream8"
+      - "ubi8"
+      - "fedora35"
+      - "fedora36"
+      - "amazonlinux"
+      - "rockylinux8"
+      - "almalinux8"
+  - scenario: "cluster_notransit"
+    ansible: ["previous", "current"]
+    platforms:
+      - "debian9"
+      - "debian10"
+      - "debian11"
+      - "ubuntu1804"
+      - "ubuntu2004"
+      - "ubuntu2204"
+      - "centos7"
+      - "centos-stream8"
+      - "ubi8"
+      - "fedora35"
+      - "fedora36"
+      - "amazonlinux"
+      - "rockylinux8"
+      - "almalinux8"

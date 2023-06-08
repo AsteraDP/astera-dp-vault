@@ -1,0 +1,26 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    vault_api_addr: "http://{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:8200"
+    vault_cluster_addr: "http://{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:8201"
+    # no ssl certificates for testing
+    vault_listeners:
+      - name: tcp
+        address: "127.0.0.1:8200"
+        cluster_address: "{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:8201"
+        tls_disable: "true"
+        unauthenticated_metrics_access: "true"
+      - name: tcp
+        address: "{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:8200"
+        cluster_address: "{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:8201"
+        tls_disable: "true"
+        unauthenticated_metrics_access: "true"
+    # show more info for testing
+    vault_show_unseal_information: true
+    vault_store_root_token: true
+
+  roles:
+    - role: "ansible-role-vault"
